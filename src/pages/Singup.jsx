@@ -26,7 +26,7 @@ const Singup = () => {
 
     try {
       const responce = await axios.post(
-        "http://localhost:5000/auth/register",
+        "https://doctor-apoitment-booking-system.onrender.com/auth/register",
         input,
       );
       if (responce.data.success) {

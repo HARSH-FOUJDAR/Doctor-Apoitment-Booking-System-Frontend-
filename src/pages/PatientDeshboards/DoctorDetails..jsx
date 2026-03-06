@@ -39,7 +39,7 @@ const DoctorProfile = () => {
     const fetchDoctor = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/doctor/getDoctor/${id}`,
+          `https://doctor-apoitment-booking-system.onrender.com/doctor/getDoctor/${id}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           },

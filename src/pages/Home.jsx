@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/doctor/getDoctor");
+        const res = await axios.get("https://doctor-apoitment-booking-system.onrender.com/doctor/getDoctor");
         setDoctor(res.data.doctors || []);
       } catch (err) {
         toast.error("Could not load ");

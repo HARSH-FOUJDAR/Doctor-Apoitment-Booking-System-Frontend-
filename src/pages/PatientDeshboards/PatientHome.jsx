@@ -18,7 +18,7 @@ const PatientHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/doctor/getDoctor", {
+        const res = await axios.get("https://doctor-apoitment-booking-system.onrender.com/doctor/getDoctor", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
