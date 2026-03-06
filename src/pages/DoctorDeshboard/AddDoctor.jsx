@@ -87,7 +87,7 @@ const AddDoctor = () => {
       formData.append("file", input.file); // Match this with Multer upload.single("file")
 
       const response = await axios.post(
-        "http://localhost:5000/doctor/addDoctor",
+        "https://doctor-apoitment-booking-system.onrender.com/doctor/addDoctor",
         formData,
         {
           headers: {
