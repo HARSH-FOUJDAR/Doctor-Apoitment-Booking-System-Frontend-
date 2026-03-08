@@ -5,10 +5,13 @@ import { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
+
+import Footer from "../components/Footer";
 import Testimonial from "../components/Testimonial";
 const Home = () => {
   const [Doctor, setDoctor] = useState([]);
-
+  const [loading, setLoading] = useState(true); // Loading state
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,6 +21,8 @@ const Home = () => {
         setDoctor(res.data.doctors || []);
       } catch (err) {
         toast.error("Could not load ");
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -38,7 +43,7 @@ const Home = () => {
                 </span>
               </div>
 
-              <h1 className="text-2xl md:text-6xl font-black tracking-tight leading-[1.1] text-slate-900">
+              <h1 className="text-xl md:text-5xl font-black tracking-tight leading-[1.1] text-slate-900">
                 We’re changing the way people
                 <span className="text-blue-600 ml-5 ">connect.</span>
               </h1>
@@ -266,6 +271,7 @@ const Home = () => {
             </div>
           </div>
         </section>
+        <Footer></Footer>
       </div>
     </>
   );
