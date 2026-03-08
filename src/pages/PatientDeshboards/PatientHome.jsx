@@ -2,12 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ClipLoader } from "react-spinners";
+
 import PatientSidebar from "./patientSidebar";
 import { IoLocation } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
+
 import { FaStethoscope } from "react-icons/fa"; // Doctor icon ke liye
 const PatientHome = () => {
   const [Doctor, setDoctor] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   if (!token) {
@@ -18,13 +22,18 @@ const PatientHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://doctor-apoitment-booking-system.onrender.com/doctor/getDoctor", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          "https://doctor-apoitment-booking-system.onrender.com/doctor/getDoctor",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
 
         setDoctor(res.data.doctors || res.data);
       } catch (err) {
         toast.error("Could not load ");
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -101,10 +110,12 @@ const PatientHome = () => {
     "Hepatologist",
     "Infectious Disease Specialist",
   ];
+
   return (
-    <div>
+    <>
+      {" "}
       <PatientSidebar></PatientSidebar>
-      <section className="bg-gradient-to-r from-blue-700 to-indigo-800 w-full py-16 flex flex-col items-center justify-center text-white px-4">
+      <section className="bg-gradient-to-r from-blue-700 to-indigo-800 w-full  py-16 flex flex-col items-center  justify-center text-white px-4">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-2">
             Find Your Specialist
@@ -157,7 +168,6 @@ const PatientHome = () => {
           </button>
         </div>
       </section>
-
       <section className="py-20 bg-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           {/* Heading Section */}
@@ -247,8 +257,29 @@ const PatientHome = () => {
             ))}
           </div>
         </div>
+        {loading ? (
+          <div className="flex flex-col items-center justify-center h-screen bg-slate-100">
+            <div className="relative flex items-center justify-center mb-4">
+              <div className="absolute">
+                <ClipLoader color="#3B82F6" size={100} speedMultiplier={0.8} />
+              </div>
+
+              <img
+                className="w-16 h-16 object-contain rounded-full bg-white p-2 shadow-sm"
+                src="https://image.similarpng.com/file/similarpng/very-thumbnail/2022/01/Health-Medical-Logo-design-on-transparent-background-PNG.png"
+                alt="Medical Logo"
+              />
+            </div>
+
+            <p className="text-slate-500 font-medium animate-pulse">
+              Securing your connection...
+            </p>
+          </div>
+        ) : (
+          <p className="text-slate-500 font-medium animate-pulse">No Doctor</p>
+        )}
       </section>
-    </div>
+    </>
   );
 };
 

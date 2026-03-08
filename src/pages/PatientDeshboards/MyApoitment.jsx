@@ -37,9 +37,12 @@ const MyAppointment = () => {
   const handleCancel = async (id) => {
     if (window.confirm("Are you sure you want to cancel this appointment?")) {
       try {
-        await axios.delete(`https://doctor-apoitment-booking-system.onrender.com/appoitmet/delete/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.delete(
+          `https://doctor-apoitment-booking-system.onrender.com/appoitmet/delete/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
         setAppointments(appointments.filter((app) => app._id !== id));
         alert("Appointment cancelled successfully.");
       } catch (err) {

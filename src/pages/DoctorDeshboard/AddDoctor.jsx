@@ -204,9 +204,9 @@ const AddDoctor = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className={`w-full ${loading ? "bg-gray-400" : "bg-indigo-600 hover:bg-indigo-700"} text-white font-bold p-4 rounded-2xl transition-all duration-300 shadow-lg shadow-indigo-100 mt-6`}
+                className={`w-full ${loading ? "bg-gray-400 cursor-blanck" : "bg-indigo-600 hover:bg-indigo-700"} text-white font-bold p-4 rounded-2xl transition-all duration-300 shadow-lg shadow-indigo-100 mt-6`}
               >
-                {loading ? "Uploading to Cloudinary..." : "Register Doctor"}
+                {loading ? "Uploading..." : "Register Doctor"}
               </button>
             </form>
           </div>

@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import PopularRooms from "../components/PopularRooms";
 import Testimonial from "../components/Testimonial";
 const Home = () => {
   const [Doctor, setDoctor] = useState([]);
@@ -13,7 +12,9 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("https://doctor-apoitment-booking-system.onrender.com/doctor/getDoctor");
+        const res = await axios.get(
+          "https://doctor-apoitment-booking-system.onrender.com/doctor/getDoctor",
+        );
         setDoctor(res.data.doctors || []);
       } catch (err) {
         toast.error("Could not load ");
@@ -57,11 +58,11 @@ const Home = () => {
               {/* Button with Animated Line */}
               <div className="mt-10">
                 <Link to="/login">
-                  <button className=" cursor-pointer relative group overflow-hidden px-10 py-5 bg-blue-600 text-white rounded-2xl text-xl font-extrabold shadow-blue-200 shadow-2xl transition-all hover:bg-blue-700">
+                  <button className=" cursor-pointer relative group overflow-hidden px-10 py-4 bg-blue-600 text-white rounded-2xl text-xl font-extrabold shadow-blue-200 shadow-2xl transition-all hover:bg-blue-700">
                     <span className="relative z-10 flex items-center gap-2">
                       Get started
                       <svg
-                        className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                        className="w-8 h-5 group-hover:translate-x-1 transition-transform"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -189,7 +190,6 @@ const Home = () => {
           </div>
         </section>
         <section>
-          <PopularRooms></PopularRooms>
           <Testimonial></Testimonial>
         </section>
         {/* Doctor Cards Section */}
