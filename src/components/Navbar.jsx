@@ -27,9 +27,11 @@ const Navbar = () => {
 
           <div className="flex justify-end items-center gap-3 border px-2 p-2 rounded-lg cursor-pointer">
             <IoCallSharp className="text-2xl text-red-500" />
-            <button className="font-extrabold text-lg cursor-pointer">
-              Emergencies Call{" "}
-            </button>
+            <a href="tel:9783454978">
+              <button className="font-extrabold text-lg cursor-pointer">
+                Emergencies Call{" "}
+              </button>
+            </a>
           </div>
         </div>
       </div>
