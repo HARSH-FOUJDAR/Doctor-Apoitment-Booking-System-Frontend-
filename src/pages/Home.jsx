@@ -218,7 +218,7 @@ const Home = () => {
                   className="bg-white rounded-3xl shadow-md border border-gray-200 overflow-hidden flex flex-col w-full"
                 >
                   {/* Image */}
-                  <div className="h-64">
+                  <div className="h-100 w-full">
                     <img
                       src={doctor.profile?.profilePicture}
                       alt={doctor.name}
@@ -231,9 +231,13 @@ const Home = () => {
                     <h3 className="text-xl font-bold text-gray-900">
                       Dr. {doctor.name}
                     </h3>
-                    <p className="text-blue-600 font-semibold text-sm mt-1 uppercase tracking-wide">
-                      {doctor.specialization}
-                    </p>
+                    <div className="flex gap-5 mt-2">
+                      <span className="font-bold text-blue-900"> MBBS.MD </span>
+                      <p className="text-blue-600  text-sm mt-1 uppercase font-bold">
+                        {doctor.specialization}
+                      </p>
+                    </div>
+
                     <div className="flex items-center gap-2 text-green-600 text-sm font-bold mt-5">
                       <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>

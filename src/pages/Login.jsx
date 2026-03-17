@@ -53,14 +53,14 @@ const Login = () => {
     <>
       <Navbar></Navbar>
 
-      <div className="flex min-h-screen flex-col justify-center py-12 bg-slate-50 sm:px-6 lg:px-8">
+      <div className="flex min-h-screen flex-col justify-center py-12 mb-20 bg-slate-50 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
           <img
             className="mx-auto h-12 w-auto"
             src="https://image.similarpng.com/file/similarpng/very-thumbnail/2022/01/Health-Medical-Logo-design-on-transparent-background-PNG.png"
             alt="Health Logo"
           />
-          <h2 className="mt-6 text-3xl font-extrabold text-slate-900">
+          <h2 className="mt-2 text-3xl font-extrabold text-slate-900">
             Welcome Back
           </h2>
           <p className="mt-2 text-sm text-slate-600">
@@ -131,6 +131,19 @@ const Login = () => {
                   <span className="text-sm font-bold">Doctor</span>
                 </label>
               </div>
+              <label
+                className={`flex items-center justify-center p-3 border rounded-xl cursor-pointer transition-all ${input.role === "Admin" ? "bg-indigo-50 border-indigo-500 text-indigo-700" : "bg-white border-slate-200 text-slate-500"}`}
+              >
+                <input
+                  type="radio"
+                  name="role"
+                  value="Admin"
+                  checked={input.role === "Admin"}
+                  onChange={onChangeHandelr}
+                  className="hidden"
+                />
+                <span className="text-sm font-bold">Admin</span>
+              </label>
 
               <button
                 type="submit"

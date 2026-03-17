@@ -159,6 +159,19 @@ const Singup = () => {
                   <span className="text-sm font-bold">Doctor</span>
                 </label>
               </div>
+              <label
+                className={`flex items-center justify-center p-3 border rounded-xl cursor-pointer transition-all ${input.role === "Admin" ? "bg-indigo-50 border-indigo-500 text-indigo-700" : "bg-white border-slate-200 text-slate-500"}`}
+              >
+                <input
+                  type="radio"
+                  name="role"
+                  value="Admin"
+                  checked={input.role === "Admin"}
+                  onChange={onChangeHandelr}
+                  className="hidden"
+                />
+                <span className="text-sm font-bold">Admin</span>
+              </label>
 
               {/* Submit Button */}
               <div>
