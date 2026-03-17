@@ -13,7 +13,7 @@ import MyApoitment from "./pages/PatientDeshboards/MyApoitment";
 import PatientProfile from "./pages/PatientDeshboards/PatientProfile";
 import DoctorDetails from "./pages/PatientDeshboards/DoctorDetails.";
 import AdminHome from "./pages/Admin/AdminHome";
-// import ApoitmentForm from "./pages/PatientDeshboards/ApoitmentForm";
+import AllDoctor from "./pages/Admin/AllDoctor";
 const App = () => {
   return (
     <BrowserRouter>
@@ -31,6 +31,7 @@ const App = () => {
         <Route path="/patientprofile" element={<PatientProfile />} />
         <Route path="/doctorDetails/:id" element={<DoctorDetails />} />
         <Route path="/adminHome" element={<AdminHome />} />
+          <Route path="/alldoctor" element={<AllDoctor />} />
       </Routes>
     </BrowserRouter>
   );

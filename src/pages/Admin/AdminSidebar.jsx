@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   LayoutDashboard,
-  CalendarCheck,
-  UserCircle,
   LogOut,
   ChevronLeft,
   Stethoscope,
-  ClipboardList,
-  Settings,
+  Users, // Added for consistency
+  UserPlus,
 } from "lucide-react";
-import { MdAdd } from "react-icons/md";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // Dummy user state - isse aap apne backend/auth logic se replace karein
-  const [user, setUser] = useState({
+  const [user] = useState({
     username: "Dr. Sameer",
     email: "doctor@clinic.com",
   });
@@ -29,30 +25,19 @@ const AdminSidebar = () => {
     navigate("/");
   };
 
-  // Doctor Appointment Navigation Items
   const navItems = [
     {
       icon: <LayoutDashboard size={22} />,
       label: "Dashboard",
-      path: "/doctorhome",
+      path: "/adminHome",
     },
     {
-      icon: <CalendarCheck size={22} />,
-      label: "Appointments",
-      path: "/appointments",
+      icon: <Users size={22} />, // Replaced raw SVG
+      label: "All Doctors",
+      path: "/alldoctor",
     },
     {
-      icon: <ClipboardList size={22} />,
-      label: "Patient Records",
-      path: "/patientrecords",
-    },
-    {
-      icon: <UserCircle size={22} />,
-      label: "Profile",
-      path: "/doctorprofile",
-    },
-    {
-      icon: <MdAdd size={22} />,
+      icon: <UserPlus size={22} />, // Used Lucide for "Add Doctor"
       label: "Add Doctor",
       path: "/adddoctor",
     },
@@ -64,7 +49,11 @@ const AdminSidebar = () => {
       <div className="lg:hidden fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-blue-100 p-4 flex justify-between items-center z-[60]">
         <div className="flex items-center gap-2">
           <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
-            <Stethoscope size={20} />
+            <img
+              className="w-10 h-10 object-contain rounded-2xl "
+              src="https://image.similarpng.com/file/similarpng/very-thumbnail/2022/01/Health-Medical-Logo-design-on-transparent-background-PNG.png"
+              alt="Medical Logo"
+            />
           </div>
           <span className="text-xl font-black text-gray-800 tracking-tight">
             Medi<span className="text-blue-600">Care</span>
@@ -107,10 +96,10 @@ const AdminSidebar = () => {
         className="hidden lg:flex fixed left-0 top-0 h-screen bg-white text-gray-800 flex-col z-50 border-r border-gray-100 shadow-xl"
       >
         {/* Logo Section */}
-        <div className="p-8 mb-4 flex items-center gap-4">
-          <div className="min-w-[48px] h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-100 text-white">
+        <div className="p-8 mb-4 flex items-center gap-4 overflow-hidden">
+          <div className="min-w-[48px] h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg text-white">
             <img
-              className="w-10 h-10 object-contain rounded-2xl"
+              className="w-10 h-10 object-contain rounded-2xl "
               src="https://image.similarpng.com/file/similarpng/very-thumbnail/2022/01/Health-Medical-Logo-design-on-transparent-background-PNG.png"
               alt="Medical Logo"
             />
@@ -119,7 +108,7 @@ const AdminSidebar = () => {
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-2xl font-black text-gray-800 tracking-tight"
+              className="text-2xl font-black text-gray-800 tracking-tight whitespace-nowrap"
             >
               Appoint<span className="text-blue-500">ify</span>
             </motion.span>
@@ -147,7 +136,7 @@ const AdminSidebar = () => {
                   </span>
                   {!isCollapsed && (
                     <span
-                      className={`font-bold tracking-wide ${isActive ? "text-blue-700" : ""}`}
+                      className={`font-bold tracking-wide whitespace-nowrap ${isActive ? "text-blue-700" : ""}`}
                     >
                       {item.label}
                     </span>
@@ -165,35 +154,33 @@ const AdminSidebar = () => {
         </nav>
 
         {/* User Profile Section */}
-        {user && (
-          <div className="p-6 mt-auto">
-            <div
-              className={`flex items-center gap-3 p-3 rounded-2xl bg-gray-50 border border-gray-100 ${isCollapsed ? "justify-center" : ""}`}
-            >
-              <div className="min-w-[40px] h-10 w-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">
-                {user.username?.charAt(0)}
-              </div>
-              {!isCollapsed && (
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-bold text-gray-800 truncate">
-                    {user.username}
-                  </p>
-                  <button
-                    onClick={handleLogout}
-                    className="text-[15px] cursor-pointer font-bold text-red-500 uppercase tracking-wider hover:underline flex items-center gap-1"
-                  >
-                    Logout <LogOut size={25} />
-                  </button>
-                </div>
-              )}
+        <div className="p-6 mt-auto">
+          <div
+            className={`flex items-center gap-3 p-3 rounded-2xl bg-gray-50 border border-gray-100 ${isCollapsed ? "justify-center" : ""}`}
+          >
+            <div className="min-w-[40px] h-10 w-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold">
+              {user.username?.charAt(0)}
             </div>
+            {!isCollapsed && (
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-bold text-gray-800 truncate">
+                  {user.username}
+                </p>
+                <button
+                  onClick={handleLogout}
+                  className="text-[12px] font-bold text-red-500 uppercase tracking-wider hover:underline flex items-center gap-1"
+                >
+                  Logout <LogOut size={14} />
+                </button>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </motion.aside>
 
-      {/* Content Spacers */}
+      {/* Spacers for main layout */}
       <div
-        className={`hidden lg:block transition-all duration-300 ${isCollapsed ? "ml-[100px]" : "ml-[280px]"}`}
+        className={`hidden lg:block transition-all duration-300 ${isCollapsed ? "w-[100px]" : "w-[280px]"}`}
       />
       <div className="lg:hidden h-20" />
     </>
