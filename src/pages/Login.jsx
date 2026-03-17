@@ -39,6 +39,8 @@ const Login = () => {
 
         if (role === "doctor") {
           navigate("/doctorhome");
+        } else if (role === "Admin") {
+          navigate("/adminHome");
         } else {
           navigate("/patienthome");
         }

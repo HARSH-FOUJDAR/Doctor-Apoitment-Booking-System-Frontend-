@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import SideBar from "./SideBar";
+import AdminSidebar from "./AdminSidebar";
 
 const AddDoctor = () => {
   const navigate = useNavigate();
@@ -111,7 +111,7 @@ const AddDoctor = () => {
 
   return (
     <div className="flex bg-gray-50 min-h-screen">
-      <SideBar />
+      <AdminSidebar></AdminSidebar>
       <div className="flex-1 flex flex-col justify-center py-12 px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-xl">
           <div className="bg-white px-10 py-12 shadow-2xl rounded-[2.5rem] border border-gray-100">

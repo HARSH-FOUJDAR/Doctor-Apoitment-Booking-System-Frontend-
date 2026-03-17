@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { MdAdd } from "react-icons/md";
 
-const SideBar = () => {
+const AdminSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -51,7 +51,11 @@ const SideBar = () => {
       label: "Profile",
       path: "/doctorprofile",
     },
-
+    {
+      icon: <MdAdd size={22} />,
+      label: "Add Doctor",
+      path: "/adddoctor",
+    },
   ];
 
   return (
@@ -196,4 +200,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default AdminSidebar;
