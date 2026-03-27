@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AdminSidebar from "./AdminSidebar";
 import { IoPeople, IoMedkit, IoCalendar } from "react-icons/io5";
-
+import AdminHeroSection from "./AdminHeroSection";
 const AdminHome = () => {
   // Sample state for future data fetching
   const [doctors, setDoctors] = useState([]);
@@ -65,20 +65,9 @@ const AdminHome = () => {
             title="Growth Rate"
             count="42"
             color="bg-purple-500"
-          />{" "}
+          />
         </div>
-
-        {/* Placeholder for Doctor List / Main Content */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-          <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
-          {doctors.length === 0 ? (
-            <p className="text-gray-400 italic text-center py-10">
-              No doctor data available yet.
-            </p>
-          ) : (
-            <div>{/* Map doctors here */}</div>
-          )}
-        </div>
+        <AdminHeroSection></AdminHeroSection>
       </main>
     </div>
   );

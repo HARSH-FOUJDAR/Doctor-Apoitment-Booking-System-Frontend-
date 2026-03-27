@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard,
   LogOut,
   ChevronLeft,
   Stethoscope,
-  Users, // Added for consistency
-  UserPlus,
+  Users,
+  CalendarCheck,
+  Ambulance,
+  MessageSquare,
+  Settings,
+  Activity,
 } from "lucide-react";
 
 const AdminSidebar = () => {
@@ -18,6 +22,7 @@ const AdminSidebar = () => {
   const [user] = useState({
     username: "Dr. Sameer",
     email: "doctor@clinic.com",
+    role: "Administrator",
   });
 
   const handleLogout = () => {
@@ -25,6 +30,7 @@ const AdminSidebar = () => {
     navigate("/");
   };
 
+  // Updated with specific, professional icons for each category
   const navItems = [
     {
       icon: <LayoutDashboard size={22} />,
@@ -32,17 +38,36 @@ const AdminSidebar = () => {
       path: "/adminHome",
     },
     {
-      icon: <Users size={22} />, // Replaced raw SVG
+      icon: <Stethoscope size={22} />,
       label: "All Doctors",
       path: "/alldoctor",
     },
     {
-      icon: <UserPlus size={22} />, // Used Lucide for "Add Doctor"
-      label: "Add Doctor",
-      path: "/adddoctor",
+      icon: <Users size={22} />,
+      label: "Patients",
+      path: "/patients",
+    },
+    {
+      icon: <CalendarCheck size={22} />,
+      label: "Appointments",
+      path: "/appointments",
+    },
+    {
+      icon: <Ambulance size={22} />,
+      label: "Ambulance",
+      path: "/ambulance",
+    },
+    {
+      icon: <MessageSquare size={22} />,
+      label: "Feedback",
+      path: "/feedback",
+    },
+    {
+      icon: <Settings size={22} />,
+      label: "Settings",
+      path: "/settings",
     },
   ];
-
   return (
     <>
       {/* MOBILE TOP BAR */}
