@@ -207,10 +207,21 @@ const Home = () => {
           <Testimonial></Testimonial>
         </section>
         {loading ? (
-          <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-            <ClipLoader className="text-emerald-500 animate-spin" size={60} />
-            <p className="text-xl font-medium text-gray-600 mt-4">
-           Plaese Wait...
+          <div className="flex flex-col items-center justify-center h-screen bg-slate-100">
+            <div className="relative flex items-center justify-center mb-4">
+              <div className="absolute">
+                <ClipLoader color="#3B82F6" size={90} speedMultiplier={0.8} />
+              </div>
+
+              <img
+                className="w-16 h-16 object-contain rounded-full bg-white p-2 shadow-sm"
+                src="https://image.similarpng.com/file/similarpng/very-thumbnail/2022/01/Health-Medical-Logo-design-on-transparent-background-PNG.png"
+                alt="Medical Logo"
+              />
+            </div>
+
+            <p className="text-slate-900 font-medium animate-pulse">
+              Securing your connection Please Wait....
             </p>
           </div>
         ) : (
