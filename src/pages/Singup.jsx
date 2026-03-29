@@ -4,7 +4,10 @@ import Navbar from "../components/Navbar";
 import { toast } from "react-toastify";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Loader2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 const Singup = () => {
+  const [Loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [input, setInput] = useState({
     username: "",
@@ -18,6 +21,7 @@ const Singup = () => {
   };
 
   const handleSumbit = async (e) => {
+    setLoading(true)
     e.preventDefault();
 
     if (!input.role) {
@@ -37,6 +41,8 @@ const Singup = () => {
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong");
       console.log(err);
+    }finally{
+      setLoading(false)
     }
   };
   return (
@@ -179,7 +185,14 @@ const Singup = () => {
                   type="submit"
                   className="w-full flex justify-center bg-indigo-600 text-white py-3.5 rounded-xl font-bold shadow-lg hover:bg-indigo-700 active:scale-[0.98] transition-all"
                 >
-                  Sign Up
+                   {Loading ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : (
+                  <>
+                    Sign Up
+                    <ArrowRight size={18} className="mt-1 relative left-3" />
+                  </>
+                )}
                 </button>
               </div>
             </form>

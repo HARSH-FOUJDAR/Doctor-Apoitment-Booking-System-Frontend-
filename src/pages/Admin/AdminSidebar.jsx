@@ -86,7 +86,7 @@ const AdminSidebar = () => {
         </div>
         <button
           onClick={handleLogout}
-          className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+          className="p-2 text-gray-500 hover:text-red-500 transition-colors"
         >
           <LogOut size={22} />
         </button>
@@ -193,7 +193,7 @@ const AdminSidebar = () => {
                 </p>
                 <button
                   onClick={handleLogout}
-                  className="text-[12px] font-bold text-red-500 uppercase tracking-wider hover:underline flex items-center gap-1"
+                  className="text-[15px] cursor-pointer font-bold text-red-500 uppercase tracking-wider hover:underline flex items-center gap-1"
                 >
                   Logout <LogOut size={14} />
                 </button>

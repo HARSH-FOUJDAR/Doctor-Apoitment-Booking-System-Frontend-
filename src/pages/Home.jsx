@@ -4,14 +4,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
 import Footer from "../components/Footer";
 import Testimonial from "../components/Testimonial";
 const Home = () => {
+  const navigate = useNavigate();
   const [Doctor, setDoctor] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,6 +29,13 @@ const Home = () => {
     };
     fetchData();
   }, []);
+
+  const handelView = () => {
+    const token = localStorage.getItem("token");
+    token
+      ? navigate(`/patienthome`)
+      : (toast.info("Plese Login First "), navigate("/login"));
+  };
   return (
     <>
       <Navbar></Navbar>
@@ -197,84 +206,98 @@ const Home = () => {
         <section>
           <Testimonial></Testimonial>
         </section>
-        {/* Doctor Cards Section */}
-        <section className="py-20 bg-gray-100">
-          <div className="max-w-7xl mx-auto px-6">
-            {/* Heading Section */}
-            <div className="mb-12 ">
-              <h2 className="text-3xl md:text-4xl justify-center items-center flex  font-bold text-blue-900">
-                Expert Medical Professionals
-              </h2>
-              <p className="mt-2 text-gray-600  justify-center items-center flex text-lg">
-                Book an appointment with our top-rated specialists.
-              </p>
-            </div>
-
-            {/* Grid setup: Ek line mein 4 cards (Desktop par) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {Doctor.map((doctor) => (
-                <div
-                  key={doctor._id}
-                  className="bg-white rounded-3xl shadow-md border border-gray-200 overflow-hidden flex flex-col w-full"
-                >
-                  {/* Image */}
-                  <div className="h-100 w-full">
-                    <img
-                      src={doctor.profile?.profilePicture}
-                      alt={doctor.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      Dr. {doctor.name}
-                    </h3>
-                    <div className="flex gap-5 mt-2">
-                      <span className="font-bold text-blue-900"> MBBS.MD </span>
-                      <p className="text-blue-600  text-sm mt-1 uppercase font-bold">
-                        {doctor.specialization}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2 text-green-600 text-sm font-bold mt-5">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                      </span>
-                      Available Today
-                    </div>
-                    {/* Simple Info Row */}
-                    <div className="flex justify-between items-center py-4 border-t border-gray-100 mt-6">
-                      <div>
-                        <p className="text-[10px] text-gray-400 font-bold uppercase">
-                          Experience
-                        </p>
-                        <p className="text-md font-bold text-gray-800">
-                          {doctor.experience} Years
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-[10px] text-gray-400 font-bold uppercase">
-                          Fees
-                        </p>
-                        <p className="text-md font-bold text-gray-800">
-                          ₹{doctor.payment}
-                        </p>
-                      </div>
-                    </div>
-                    <Link to="/login">
-                      <button className="w-full cursor-pointer mt-2 bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition-colors">
-                        Book Appointment
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
+        {loading ? (
+          <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+            <ClipLoader className="text-emerald-500 animate-spin" size={100} />
+            <p className="text-xl font-medium text-gray-600 mt-4">
+              Loading your kitchen...
+            </p>
           </div>
-        </section>
+        ) : (
+          <section className="py-20 bg-gray-100">
+            <div className="max-w-7xl mx-auto px-6">
+              {/* Heading Section */}
+              <div className="mb-12 ">
+                <h2 className="text-3xl md:text-4xl justify-center items-center flex  font-bold text-blue-900">
+                  Expert Medical Professionals
+                </h2>
+                <p className="mt-2 text-gray-600  justify-center items-center flex text-lg">
+                  Book an appointment with our top-rated specialists.
+                </p>
+              </div>
+
+              {/* Grid setup: Ek line mein 4 cards (Desktop par) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {Doctor.map((doctor) => (
+                  <div
+                    key={doctor._id}
+                    className="bg-white rounded-3xl shadow-md border border-gray-200 overflow-hidden flex flex-col w-full"
+                  >
+                    {/* Image */}
+                    <div className="h-100 w-full">
+                      <img
+                        src={doctor.profile?.profilePicture}
+                        alt={doctor.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 flex-grow flex flex-col">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Dr. {doctor.name}
+                      </h3>
+                      <div className="flex gap-5 mt-2">
+                        <span className="font-bold text-blue-900">
+                          {" "}
+                          MBBS.MD{" "}
+                        </span>
+                        <p className="text-blue-600  text-sm mt-1 uppercase font-bold">
+                          {doctor.specialization}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2 text-green-600 text-sm font-bold mt-5">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        Available Today
+                      </div>
+                      {/* Simple Info Row */}
+                      <div className="flex justify-between items-center py-4 border-t border-gray-100 mt-6">
+                        <div>
+                          <p className="text-[10px] text-gray-400 font-bold uppercase">
+                            Experience
+                          </p>
+                          <p className="text-md font-bold text-gray-800">
+                            {doctor.experience} Years
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-[10px] text-gray-400 font-bold uppercase">
+                            Fees
+                          </p>
+                          <p className="text-md font-bold text-gray-800">
+                            ₹{doctor.payment}
+                          </p>
+                        </div>
+                      </div>
+                      <Link to="/login">
+                        <button
+                          onClick={handelView}
+                          className="w-full cursor-pointer mt-2 bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 rounded-xl transition-colors"
+                        >
+                          Book Appointment
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
         <Footer></Footer>
       </div>
     </>

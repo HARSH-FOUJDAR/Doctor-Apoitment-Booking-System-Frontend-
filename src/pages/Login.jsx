@@ -3,7 +3,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { Loader2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const [input, setInput] = useState({
     email: "",
     role: "patient", // Set a default role
@@ -18,6 +21,7 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const { email, role, password } = input;
 
@@ -30,24 +34,24 @@ const Login = () => {
         },
       );
 
-      if (res.data.token) {
-        localStorage.setItem("token", res.data.token);
+      localStorage.setItem("token", res.data.token);
 
-        localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.setItem("user", JSON.stringify(res.data.user));
 
-        toast.success("Login Successful!");
+      toast.success("Login Successful!");
 
-        if (role === "doctor") {
-          navigate("/doctorhome");
-        } else if (role === "Admin") {
-          navigate("/adminHome");
-        } else {
-          navigate("/patienthome");
-        }
+      if (role === "doctor") {
+        navigate("/doctorhome");
+      } else if (role === "Admin") {
+        navigate("/adminHome");
+      } else {
+        navigate("/patienthome");
       }
     } catch (err) {
       toast.error(err.response?.data?.message || "Login failed");
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -149,9 +153,17 @@ const Login = () => {
 
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full flex justify-center bg-indigo-600 text-white py-3.5 rounded-xl font-bold shadow-lg hover:bg-indigo-700 active:scale-[0.98] transition-all"
               >
-                Sign In
+                {loading ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : (
+                  <>
+                    Sign In
+                    <ArrowRight size={18} className="mt-1 relative left-3" />
+                  </>
+                )}
               </button>
 
               <p className="text-center text-sm text-slate-500">
