@@ -1,5 +1,6 @@
 import React from "react";
-import { Bar, Doughnut, Line } from "react-chartjs-2";
+import { Doughnut, Line } from "react-chartjs-2";
+
 const DoctorHeroDeshboard = () => {
   const lineChartData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
@@ -44,6 +45,7 @@ const DoctorHeroDeshboard = () => {
       intersect: false,
     },
   };
+
   const generalData = {
     labels: ["Doctors", "Patients", "Appointments"],
     datasets: [
@@ -60,14 +62,18 @@ const DoctorHeroDeshboard = () => {
       },
     ],
   };
-  return (
-    <section className="flex flex-col xl:flex-row gap-6 p-6 bg-gray-50 min-h-screen">
 
-      <div className="flex-1 xl:max-w-[50%] border border-gray-200 rounded-2xl p-6 bg-white shadow-sm h-fit">
-        <h2 className="text-2xl font-bold  px-5 ">Today's Schedule</h2>
-        <p className="text-gray-500 mb-4 px-5 ">
+  return (
+    <section className="flex flex-col xl:flex-row gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-50 min-h-screen">
+      {/* Left Schedule Box */}
+      <div className="flex-1 xl:max-w-[50%] border border-gray-200 rounded-2xl p-4 sm:p-6 bg-white shadow-sm h-fit">
+        <h2 className="text-xl sm:text-2xl font-bold px-2 sm:px-5">
+          Today's Schedule
+        </h2>
+        <p className="text-gray-500 mb-4 px-2 sm:px-5">
           You have 12 appointments scheduled for today
         </p>
+
         {[
           {
             name: "Emma Thompson",
@@ -84,26 +90,30 @@ const DoctorHeroDeshboard = () => {
             time: "11:30 AM • 60 min",
             type: "Consultation",
           },
-          { name: "James Wilson", time: "01:45 PM • 30 min", type: "Urgent" },
+          {
+            name: "James Wilson",
+            time: "01:45 PM • 30 min",
+            type: "Urgent",
+          },
           {
             name: "Olivia Parker",
             time: "03:00 PM • 45 min",
             type: "Check-up",
           },
         ].map((item, index) => (
-          <div key={index} className="py-2 ">
-            <div className="flex justify-between items-center gap-4 border border-gray-200 w-full rounded-xl px-5 py-2 bg-white">
+          <div key={index} className="py-2">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border border-gray-200 w-full rounded-xl px-4 sm:px-5 py-3 bg-white">
               <div>
                 <p className="font-semibold text-gray-900">{item.name}</p>
                 <p className="text-sm text-gray-500">{item.time}</p>
                 <p className="text-sm">{item.type}</p>
               </div>
 
-              <div className="flex gap-10">
-                <button className="text-blue-500 cursor-pointer hover:text-blue-700 font-medium ">
-                  confirmed
-                </button>{" "}
-                <button className="text-blue-500 cursor-pointer hover:text-blue-700 font-medium ">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                <button className="text-blue-500 cursor-pointer hover:text-blue-700 font-medium text-left sm:text-center">
+                  Confirmed
+                </button>
+                <button className="text-blue-500 cursor-pointer hover:text-blue-700 font-medium text-left sm:text-center">
                   View
                 </button>
               </div>
@@ -111,27 +121,24 @@ const DoctorHeroDeshboard = () => {
           </div>
         ))}
       </div>
-      <div className="flex-1 rounded-xl p-5">
-        <div className="">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Chart Card 1: Line (Spans 2 columns on desktop for better readability) */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 h-[400px] flex flex-col md:col-span-2">
-              <h3 className="text-lg font-semibold text-gray-700 mb-4">
-                Patient & Appointment Trends
-              </h3>
-              <div className="flex-grow relative">
-                <Line data={lineChartData} options={chartOptions} />
-              </div>
-            </div>
+
+      {/* Right Charts Box */}
+      <div className="flex-1 flex flex-col gap-5">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-5 h-[300px] sm:h-[400px] flex flex-col">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-4">
+            Patient & Appointment Trends
+          </h3>
+          <div className="flex-grow relative">
+            <Line data={lineChartData} options={chartOptions} />
           </div>
-          {/* Chart Card 3: Doughnut */}
-          <div className="bg-white rounded-xl mt-5 shadow-sm border border-gray-100 p-5 h-[350px] flex flex-col">
-            <h3 className="text-lg font-semibold text-gray-700 mb-4">
-              Distribution
-            </h3>
-            <div className="flex-grow relative">
-              <Doughnut data={generalData} options={chartOptions} />
-            </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-5 h-[280px] sm:h-[350px] flex flex-col">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-4">
+            Distribution
+          </h3>
+          <div className="flex-grow relative">
+            <Doughnut data={generalData} options={chartOptions} />
           </div>
         </div>
       </div>

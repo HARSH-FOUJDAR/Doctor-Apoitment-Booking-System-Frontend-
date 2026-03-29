@@ -25,14 +25,13 @@ const Navbar = () => {
 
           {/* Right Side: Links */}
 
-          <div className="flex justify-end items-center gap-3 border px-2 p-2 rounded-lg cursor-pointer">
-            <IoCallSharp className="text-2xl text-red-500" />
-            <a href="tel:9783454978">
-              <button className="font-extrabold text-lg cursor-pointer">
-                Emergencies Call{" "}
-              </button>
-            </a>
-          </div>
+          <a
+            href="tel:9783454978"
+            className="flex items-center justify-center sm:justify-end gap-3 border px-4 sm:px-6 py-2 rounded-lg cursor-pointer hover:bg-red-50 transition"
+          >
+            <IoCallSharp className="text-xl sm:text-2xl text-red-500" />
+            <span className="font-bold text-sm sm:text-lg">Emergency Call</span>
+          </a>
         </div>
       </div>
     </nav>

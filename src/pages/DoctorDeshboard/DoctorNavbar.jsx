@@ -63,9 +63,8 @@ const DoctorNavbar = () => {
             color="bg-purple-500"
           />
         </div>
-        <main className="p-8">
-          <DoctorHeroDeshboard />
-        </main>
+
+        <DoctorHeroDeshboard />
       </main>
     </div>
   );
