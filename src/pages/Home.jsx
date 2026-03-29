@@ -208,9 +208,9 @@ const Home = () => {
         </section>
         {loading ? (
           <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-            <ClipLoader className="text-emerald-500 animate-spin" size={100} />
+            <ClipLoader className="text-emerald-500 animate-spin" size={60} />
             <p className="text-xl font-medium text-gray-600 mt-4">
-              Loading your kitchen...
+           Plaese Wait...
             </p>
           </div>
         ) : (
