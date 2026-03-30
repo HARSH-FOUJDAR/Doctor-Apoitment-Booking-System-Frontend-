@@ -120,25 +120,27 @@ const DoctorHeroDeshboard = () => {
             appointments.map((item) => (
               <div
                 key={item._id}
-                className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border border-gray-100 w-full rounded-xl px-4 py-4 bg-white hover:shadow-md transition-shadow"
+                className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 border border-gray-100 w-full rounded-xl px-4 py-4 bg-white hover:shadow-md hover:border-blue-500 transition-shadow"
               >
                 <div>
                   <p className="font-semibold text-gray-900">
-                    {item.patient?.name || "Unknown Patient"}
+                    {item.firstName || "Unknown Patient"} {item.lastName}
                   </p>
                   <p className="text-sm text-gray-500">
-                    {item.slotTime || item.time || "No time set"}
+                    {item.appointmentTime ||
+                      item.appointmentTime ||
+                      "No time set"}
                   </p>
                   <p className="text-xs font-medium text-blue-600 uppercase mt-1">
-                    {item.amount ? "Paid" : "Online"}
+                    {item.status ? "Paid" : "Online"}
                   </p>
                 </div>
 
-                <div className="flex gap-4">
-                  <button className="text-emerald-600 hover:text-emerald-700 font-semibold text-sm transition-colors">
+                <div className="flex gap-10">
+                  <button className="text-emerald-600 hover:text-emerald-700 font-semibold text-sm transition-colors cursor-pointer">
                     Confirm
                   </button>
-                  <button className="text-blue-600 hover:text-blue-700 font-semibold text-sm transition-colors">
+                  <button className="text-blue-600 font-semibold text-md  border px-3 rounded-lg hover:bg-blue-500 hover:text-white transition-colors cursor-pointer">
                     View
                   </button>
                 </div>
