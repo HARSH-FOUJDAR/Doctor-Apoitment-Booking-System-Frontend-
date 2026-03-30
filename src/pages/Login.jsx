@@ -18,10 +18,10 @@ const Login = () => {
   const onChangeHandelr = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
       const { email, role, password } = input;
 
@@ -35,7 +35,6 @@ const Login = () => {
       );
 
       localStorage.setItem("token", res.data.token);
-
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
       toast.success("Login Successful!");
@@ -54,7 +53,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-
   return (
     <>
       <Navbar></Navbar>

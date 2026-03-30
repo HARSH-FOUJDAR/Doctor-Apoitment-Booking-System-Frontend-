@@ -206,8 +206,16 @@ const Home = () => {
         <section>
           <Testimonial></Testimonial>
         </section>
+        <div className="mb-12 ">
+          <h2 className="text-3xl md:text-4xl justify-center items-center flex  font-bold text-blue-900">
+            Expert Medical Professionals
+          </h2>
+          <p className="mt-2 text-gray-600  justify-center items-center flex text-lg">
+            Book an appointment with our top-rated specialists.
+          </p>
+        </div>
         {loading ? (
-          <div className="flex flex-col items-center justify-center h-screen bg-slate-100">
+          <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100">
             <div className="relative flex items-center justify-center mb-4">
               <div className="absolute">
                 <ClipLoader color="#3B82F6" size={90} speedMultiplier={0.8} />
@@ -228,14 +236,6 @@ const Home = () => {
           <section className="py-20 bg-gray-100">
             <div className="max-w-7xl mx-auto px-6">
               {/* Heading Section */}
-              <div className="mb-12 ">
-                <h2 className="text-3xl md:text-4xl justify-center items-center flex  font-bold text-blue-900">
-                  Expert Medical Professionals
-                </h2>
-                <p className="mt-2 text-gray-600  justify-center items-center flex text-lg">
-                  Book an appointment with our top-rated specialists.
-                </p>
-              </div>
 
               {/* Grid setup: Ek line mein 4 cards (Desktop par) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
