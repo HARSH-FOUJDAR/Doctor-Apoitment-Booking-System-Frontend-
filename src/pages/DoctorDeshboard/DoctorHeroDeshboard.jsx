@@ -15,6 +15,7 @@ import {
   ArcElement,
   Filler,
 } from "chart.js";
+import { Link } from "react-router-dom";
 
 ChartJS.register(
   CategoryScale,
@@ -140,9 +141,11 @@ const DoctorHeroDeshboard = () => {
                   <button className="text-emerald-600 hover:text-emerald-700 font-semibold text-sm transition-colors cursor-pointer">
                     Confirm
                   </button>
-                  <button className="text-blue-600 font-semibold text-md  border px-3 rounded-lg hover:bg-blue-500 hover:text-white transition-colors cursor-pointer">
-                    View
-                  </button>
+                  <Link to={`/patientdetails/${item._id}`}>
+                    <button className="text-blue-600 font-semibold text-md  border px-3 rounded-lg hover:bg-blue-500 hover:text-white transition-colors cursor-pointer">
+                      View
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))

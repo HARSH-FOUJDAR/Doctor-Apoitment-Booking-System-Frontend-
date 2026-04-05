@@ -72,7 +72,7 @@ const Home = () => {
               {/* Button with Animated Line */}
               <div className="mt-10">
                 <Link to="/login">
-                  <button className=" cursor-pointer relative group overflow-hidden px-10 py-4 bg-blue-600 text-white rounded-2xl text-xl font-extrabold shadow-blue-200 shadow-2xl transition-all hover:bg-blue-700">
+                  <button className=" cursor-pointer relative group overflow-hidden px-10 py-4 bg-blue-600 text-white rounded-full text-md font-bold  shadow-full transition-all hover:bg-blue-700">
                     <span className="relative z-10 flex items-center gap-2">
                       Get started
                       <svg

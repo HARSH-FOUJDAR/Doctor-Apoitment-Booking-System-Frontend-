@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import {
   IoArrowBack,
@@ -431,17 +431,18 @@ const DoctorProfile = () => {
                 </p>
 
                 <div className="space-y-2">
-                  <label className="flex gap-2">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="online"
-                      onChange={handleChange}
-                    />
-                    Pay Online
-                  </label>
-
-                  <label className="flex gap-2">
+                  <Link to="/payment">
+                    <label className="flex gap-2 text-mg font-bold">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="online"
+                        onChange={handleChange}
+                      />
+                      Pay Online
+                    </label>
+                  </Link>
+                  <label className="flex gap-2 text-mg font-bold">
                     <input
                       type="radio"
                       name="paymentMethod"

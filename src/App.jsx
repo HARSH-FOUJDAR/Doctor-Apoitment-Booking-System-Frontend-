@@ -14,6 +14,8 @@ import PatientProfile from "./pages/PatientDeshboards/PatientProfile";
 import DoctorDetails from "./pages/PatientDeshboards/DoctorDetails.";
 import AdminHome from "./pages/Admin/AdminHome";
 import AllDoctor from "./pages/Admin/AllDoctor";
+import PatientDetails from "./pages/DoctorDeshboard/patientDetails";
+import Paymentpage from "./pages/PatientDeshboards/Paymentpage";
 const App = () => {
   return (
     <BrowserRouter>
@@ -31,7 +33,9 @@ const App = () => {
         <Route path="/patientprofile" element={<PatientProfile />} />
         <Route path="/doctorDetails/:id" element={<DoctorDetails />} />
         <Route path="/adminHome" element={<AdminHome />} />
-          <Route path="/alldoctor" element={<AllDoctor />} />
+        <Route path="/alldoctor" element={<AllDoctor />} />
+        <Route path="/patientDetails/:id" element={<PatientDetails />} />
+        <Route path="/payment" element={<Paymentpage />} />
       </Routes>
     </BrowserRouter>
   );
