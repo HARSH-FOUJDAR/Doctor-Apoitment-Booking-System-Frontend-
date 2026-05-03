@@ -13,7 +13,6 @@ const Paymentpage = () => {
   const [patientName, setPatientName] = useState("");
   const [patientEmail, setPatientEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const [clientSecret, setClientSecret] = useState("");
   const [message, setMessage] = useState("");
 
   const ammount = state?.ammount || 0;
@@ -21,31 +20,12 @@ const Paymentpage = () => {
   const doctorId = state?.doctorId || "";
   const patientId = state?.patientId || "";
 
-  const handelCreatePayment = async () => {
-    try {
-      setMessage("");
-
-      const res = await axios.post(
-        "https://doctor-apoitment-booking-system.onrender.com/Payment/createPayment",
-        {
-          appoitmentId,
-          doctorId,
-          patientId,
-          patientName,
-          patientEmail,
-        },
-      );
-      setClientSecret(res.data.clientSecret);
-    } catch (err) {
-      console.log(err);
-      setMessage("Unable to Create a Payment");
-    }
-  };
+ 
 
   const handelPaybutton = async (e) => {
     e.preventDefault();
 
-    if (!stripe || !elements || !clientSecret) {
+    if (!stripe || !elements ) {
       setMessage("Please continue to payment first");
     }
     try {
@@ -130,7 +110,6 @@ const Paymentpage = () => {
 
           <button
             type="submit"
-            onClick={handelCreatePayment}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition"
           >
             Pay Now
