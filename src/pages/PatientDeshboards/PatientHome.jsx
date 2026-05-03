@@ -7,6 +7,7 @@ import { ClipLoader } from "react-spinners";
 import PatientSidebar from "./patientSidebar";
 import { IoLocation } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
+import Footer from "../../components/Footer";
 
 import { FaStethoscope } from "react-icons/fa"; // Doctor icon ke liye
 const PatientHome = () => {
@@ -279,6 +280,7 @@ const PatientHome = () => {
           <p className="text-slate-500 font-medium animate-pulse">No Doctor</p>
         )}
       </section>
+      <Footer></Footer>
     </>
   );
 };

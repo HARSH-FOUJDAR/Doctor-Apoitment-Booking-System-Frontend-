@@ -40,9 +40,13 @@ const Home = () => {
     <>
       <Navbar></Navbar>
       <div className="">
+        <div className="flex flex-col items-center justify-center  text-white text-2xl   bg-blue-600">
+          <button onClick={handelView} className="px-6 py-6 font-bold  transition-colors">
+            BOOK APPOINTMENT -&gt;
+          </button>
+        </div>
         <section className="relative overflow-hidden pt-20 pb-24 bg-slate-50">
           <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl pointer-events-none"></div>
-
           <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
             {/* Left Content */}
             <div className="text-left">
@@ -216,9 +220,9 @@ const Home = () => {
         </div>
         {loading ? (
           <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100">
-            <div className="relative flex items-center justify-center mb-4">
+            <div className="relative flex items-center justify-center">
               <div className="absolute">
-                <ClipLoader color="#3B82F6" size={90} speedMultiplier={0.8} />
+                <ClipLoader color="#3B82F6" size={50} speedMultiplier={0.8} />
               </div>
 
               <img
@@ -229,16 +233,16 @@ const Home = () => {
             </div>
 
             <p className="text-slate-900 font-medium animate-pulse">
-              Securing your connection Please Wait....
+              Securing your connection Please Wait........
             </p>
           </div>
         ) : (
-          <section className="py-20 bg-gray-100">
-            <div className="max-w-7xl mx-auto px-6">
+          <section className="py-20 bg-gray-100 text-gray-800 dark:text-gray-200   ">
+            <div className=" mx-auto px-6">
               {/* Heading Section */}
 
               {/* Grid setup: Ek line mein 4 cards (Desktop par) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
                 {Doctor.map((doctor) => (
                   <div
                     key={doctor._id}
@@ -269,9 +273,9 @@ const Home = () => {
                       </div>
 
                       <div className="flex items-center gap-2 text-green-600 text-sm font-bold mt-5">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        <span className="relative flex h-3 w-3">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-72 "></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
                         </span>
                         Available Today
                       </div>

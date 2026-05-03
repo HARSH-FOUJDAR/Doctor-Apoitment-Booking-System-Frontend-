@@ -16,7 +16,10 @@ import AdminHome from "./pages/Admin/AdminHome";
 import AllDoctor from "./pages/Admin/AllDoctor";
 import PatientDetails from "./pages/DoctorDeshboard/patientDetails";
 import Paymentpage from "./pages/PatientDeshboards/Paymentpage";
+import PaymentSuccesspage from "./pages/PatientDeshboards/PaymentSuccesspage";
+import PaymentStripeCreate from "./pages/PatientDeshboards/PaymentStripeCreate";
 const App = () => {
+
   return (
     <BrowserRouter>
       <Routes>
@@ -36,6 +39,8 @@ const App = () => {
         <Route path="/alldoctor" element={<AllDoctor />} />
         <Route path="/patientDetails/:id" element={<PatientDetails />} />
         <Route path="/payment" element={<Paymentpage />} />
+        <Route path="/payment-success" element={<PaymentSuccesspage />} />
+        <Route path="/payment-stripe" element={<PaymentStripeCreate />} />
       </Routes>
     </BrowserRouter>
   );

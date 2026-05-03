@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-900 pt-16 pb-8 border-t border-slate-800">
+    <footer className="bg-gradient-to-br  from-blue-800 to-blue-700 pt-16 pb-8 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12 mb-16">
           {/* Brand & Description */}
@@ -168,7 +168,7 @@ const Footer = () => {
           </div>
 
           <p className="text-sm text-slate-500 font-medium">
-            © 2026 Your Appoint App, Inc. All rights reserved.
+            © 2026 Your Appoint Fi, Inc. All rights reserved.
           </p>
         </div>
       </div>

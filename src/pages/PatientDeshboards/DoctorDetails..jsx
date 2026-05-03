@@ -431,17 +431,17 @@ const DoctorProfile = () => {
                 </p>
 
                 <div className="space-y-2">
-                  <Link to="/payment">
+                
                     <label className="flex gap-2 text-mg font-bold">
                       <input
                         type="radio"
                         name="paymentMethod"
                         value="online"
-                        onChange={handleChange}
+                        onChange={(e) => navigate("/payment-stripe")}
+                        
                       />
                       Pay Online
                     </label>
-                  </Link>
                   <label className="flex gap-2 text-mg font-bold">
                     <input
                       type="radio"

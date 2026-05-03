@@ -99,7 +99,7 @@ const AddDoctor = () => {
 
       if (response.data.success) {
         toast.success("Doctor added successfully!");
-        navigate("/doctorhome");
+        navigate("/adminHome");
       }
     } catch (error) {
       console.error(error);

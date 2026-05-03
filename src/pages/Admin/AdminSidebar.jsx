@@ -13,7 +13,7 @@ import {
   Settings,
   Activity,
 } from "lucide-react";
-
+import { GrAddCircle } from "react-icons/gr";
 const AdminSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -66,6 +66,11 @@ const AdminSidebar = () => {
       icon: <Settings size={22} />,
       label: "Settings",
       path: "/settings",
+    },
+        {
+      icon: <GrAddCircle size={22} />,
+      label: "Add Doctor",
+      path: "/adddoctor",
     },
   ];
   return (

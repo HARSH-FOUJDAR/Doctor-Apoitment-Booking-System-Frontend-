@@ -58,7 +58,9 @@ const Login = () => {
       <Navbar></Navbar>
 
       <div className="flex min-h-screen flex-col justify-center py-12 mb-20 bg-slate-50 sm:px-6 lg:px-8">
+      
         <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
+          
           <img
             className="mx-auto h-12 w-auto"
             src="https://image.similarpng.com/file/similarpng/very-thumbnail/2022/01/Health-Medical-Logo-design-on-transparent-background-PNG.png"
