@@ -1,52 +1,51 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import Paymentpage from "./Paymentpage";
 import PatientSidebar from "./PatientSidebar";
-const stripepromise = loadStripe(
-  "pk_test_51TGyn4EoUfTQXtUdA6uNjn5F1vd8iQOEyh0H6JTptB2SPyV60hO0eI8ln8ggFkJxTzzDu1qmTKFZuFRwjvfhws3k00YbnpcvnZ",
-);
+import { useLocation } from "react-router-dom";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
 const PaymentStripeCreate = () => {
   const [clientSecret, setClientSecret] = useState("");
-  const appoitmentId = localStorage.getItem("appoitmentId");
-  const doctorId = localStorage.getItem("doctorId");
-  const patientId = localStorage.getItem("patientId");
-  const patientName = localStorage.getItem("patientName");
-  const patientEmail = localStorage.getItem("patientEmail");
+  const { state } = useLocation();
+
+  const appointmentId = state?.appointmentId;
+  const patientName = state?.patientName;
+  const patientEmail = state?.patientEmail;
 
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-
     const createPaymentIntent = async () => {
       try {
         const res = await axios.post(
-          "https://doctor-apoitment-booking-system.onrender.com/Payment/createPayment",
+          "http://localhost:5000/Payment/createPayment",
           {
-            appointmentId: appoitmentId,
+            appointmentId,
             amount: 500,
-            doctorId,
-            patientId,
             patientName,
             patientEmail,
           },
         );
+
         setClientSecret(res.data.clientSecret);
       } catch (err) {
-        console.log(err);
+        console.log(err.response?.data || err.message);
       }
     };
-    createPaymentIntent();
+
+    if (appointmentId) createPaymentIntent();
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col justify-center py-12 mb-20 bg-slate-50 sm:px-6 lg:px-8">
-      <PatientSidebar></PatientSidebar>
+    <div className="flex min-h-screen flex-col justify-center py-12 bg-slate-50">
+      <PatientSidebar />
+
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-        <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+        <div className="bg-white px-6 py-12 shadow rounded-lg">
           {clientSecret && (
-            <Elements stripe={stripepromise} options={{ clientSecret }}>
+            <Elements stripe={stripePromise} options={{ clientSecret }}>
               <Paymentpage />
             </Elements>
           )}
