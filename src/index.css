@@ -77,3 +77,6 @@ header {
 .team-card {
   @apply transition-all duration-300 hover:shadow-premium hover:-translate-y-2;
 }
+.StripeElement img {
+  display: none !important;
+}

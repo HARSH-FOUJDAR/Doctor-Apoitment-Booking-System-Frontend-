@@ -44,6 +44,7 @@ const PaymentStripeCreate = () => {
               className="stripe-elements"
               stripe={stripePromise}
               options={{ clientSecret }}
+              
             >
               <Paymentpage />
             </Elements>

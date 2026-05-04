@@ -44,8 +44,6 @@ const PatientSidebar = () => {
       label: "My Appointments",
       path: "/myapoitment",
     },
-
-
         {
       icon: <GrArticle size={22} />,
       label: "Payment History",
@@ -115,7 +113,7 @@ const PatientSidebar = () => {
       <motion.aside
         initial={false}
         animate={{ width: isCollapsed ? "100px" : "280px" }}
-        className="hidden lg:flex fixed left-0 top-0 h-screen bg-white text-gray-800 flex-col z-50 border-r border-gray-100 shadow-xl"
+        className="hidden lg:flex fixed left-0 top-0 h-screen bg-white  text-gray-800 flex-col z-50 border-r border-gray-100 shadow-xl"
       >
 
         {/* Logo Section */}
