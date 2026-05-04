@@ -6,15 +6,13 @@ import Paymentpage from "./Paymentpage";
 import PatientSidebar from "./PatientSidebar";
 import { useLocation } from "react-router-dom";
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(
+  "pk_test_51TGyn4EoUfTQXtUdA6uNjn5F1vd8iQOEyh0H6JTptB2SPyV60hO0eI8ln8ggFkJxTzzDu1qmTKFZuFRwjvfhws3k00YbnpcvnZ",
+);
 
 const PaymentStripeCreate = () => {
   const [clientSecret, setClientSecret] = useState("");
-  const { state } = useLocation();
-
-  const appointmentId = state?.appointmentId;
-  const patientName = state?.patientName;
-  const patientEmail = state?.patientEmail;
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const createPaymentIntent = async () => {
@@ -22,30 +20,32 @@ const PaymentStripeCreate = () => {
         const res = await axios.post(
           "http://localhost:5000/Payment/createPayment",
           {
-            appointmentId,
             amount: 500,
-            patientName,
-            patientEmail,
           },
         );
 
+        console.log("Payment Response:", res.data);
+
         setClientSecret(res.data.clientSecret);
       } catch (err) {
-        console.log(err.response?.data || err.message);
+        console.log(err);
+        setError("Payment form failed to load.");
       }
     };
 
-    if (appointmentId) createPaymentIntent();
+    createPaymentIntent();
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col justify-center py-12 bg-slate-50">
-      <PatientSidebar />
-
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-        <div className="bg-white px-6 py-12 shadow rounded-lg">
+    <div className="flex justify-center ">
+      <div className="mt-10 sm:mx-auto sm:w-full">
+        <div className=" px-6 py-12  rounded-lg border-blue-400">
           {clientSecret && (
-            <Elements stripe={stripePromise} options={{ clientSecret }}>
+            <Elements
+              className="stripe-elements"
+              stripe={stripePromise}
+              options={{ clientSecret }}
+            >
               <Paymentpage />
             </Elements>
           )}

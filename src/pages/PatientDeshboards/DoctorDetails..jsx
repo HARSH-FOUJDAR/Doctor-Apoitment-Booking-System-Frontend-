@@ -20,6 +20,7 @@ const DoctorProfile = () => {
   const navigate = useNavigate();
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [appointment, setAppointment] = useState({});
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -31,6 +32,7 @@ const DoctorProfile = () => {
     reason: "",
     appointmentDate: "",
     appointmentTime: "",
+  
   });
 
   const token = localStorage.getItem("token");
@@ -431,17 +433,13 @@ const DoctorProfile = () => {
                 </p>
 
                 <div className="space-y-2">
-                
-                    <label className="flex gap-2 text-mg font-bold">
-                      <input
-                        type="radio"
-                        name="paymentMethod"
-                        value="online"
-                        onChange={(e) => navigate("/payment-stripe")}
-                        
-                      />
+                  <label className="flex gap-2 text-mg font-bold">
+                    <Link
+                      to="/payment-stripe"
+                    >
                       Pay Online
-                    </label>
+                    </Link>
+                  </label>
                   <label className="flex gap-2 text-mg font-bold">
                     <input
                       type="radio"
