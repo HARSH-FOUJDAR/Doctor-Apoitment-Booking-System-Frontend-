@@ -12,6 +12,9 @@ import {
   Settings,
 } from "lucide-react";
 import { MdAdd } from "react-icons/md";
+import { GrArticle } from "react-icons/gr";
+import { FaSuitcaseMedical } from "react-icons/fa6";
+import { HiShoppingBag } from "react-icons/hi2";
 
 const PatientSidebar = () => {
   const navigate = useNavigate();
@@ -42,11 +45,28 @@ const PatientSidebar = () => {
       path: "/myapoitment",
     },
 
-    {
+
+        {
+      icon: <GrArticle size={22} />,
+      label: "Payment History",
+      path: "/paymenthistory",
+    },
+        {
+      icon: <FaSuitcaseMedical size={22} />,
+      label: "Emergency Contacts",
+      path: "/emergency",
+    },
+        {
+      icon: <HiShoppingBag size={22} />,
+      label: "Medical Store",
+      path: "/medicalstore",
+    },
+        {
       icon: <UserCircle size={22} />,
       label: "Profile",
       path: "/patientprofile",
-    },
+        },
+  
   ];
 
   return (

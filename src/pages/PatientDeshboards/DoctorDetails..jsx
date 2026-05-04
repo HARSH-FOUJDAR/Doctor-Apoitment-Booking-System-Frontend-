@@ -434,13 +434,6 @@ const DoctorProfile = () => {
 
                 <div className="space-y-2">
                   <label className="flex gap-2 text-mg font-bold">
-                    <Link
-                      to="/payment-stripe"
-                    >
-                      Pay Online
-                    </Link>
-                  </label>
-                  <label className="flex gap-2 text-mg font-bold">
                     <input
                       type="radio"
                       name="paymentMethod"
@@ -451,8 +444,9 @@ const DoctorProfile = () => {
                   </label>
                 </div>
               </div>
-
+            
               <button
+              onClick={() => navigate("/payment-stripe")}
                 type="submit"
                 className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
               >

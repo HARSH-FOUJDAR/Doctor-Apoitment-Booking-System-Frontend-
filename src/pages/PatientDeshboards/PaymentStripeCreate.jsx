@@ -18,7 +18,7 @@ const PaymentStripeCreate = () => {
     const createPaymentIntent = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:5000/Payment/createPayment",
+          "https://doctor-apoitment-booking-system.onrender.com/Payment/createPayment",
           {
             amount: 500,
           },

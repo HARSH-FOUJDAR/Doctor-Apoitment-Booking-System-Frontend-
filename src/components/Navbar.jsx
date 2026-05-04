@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IoCallSharp } from "react-icons/io5";
 import { TbLogin2 } from "react-icons/tb";
-
+import { Menu } from "lucide-react";
 const Navbar = () => {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <nav className="sticky top-0 z-50 bg-transparent  border-gray-200  shadow-sm ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,9 +25,19 @@ const Navbar = () => {
               </span>
             </Link>
           </div>
+          <div>
+            <button
+              onClick={() => setOpen(true)}
+              className="p-2 rounded-md border md:hidden hover:bg-accent transition cursor-pointer"
+            >
+              <Menu size={24} />
+            </button>
+            {/* //Mobile Menu */}
+            
 
+          </div>
           {/* Right Side: Links */}
-          <div className="flex items-center gap-10">
+          <div className=" hidden md:flex items-center gap-4">
             <a
               href="tel:9783454978"
               className="flex items-center justify-center sm:justify-end gap-3 border px-4 sm:px-6 py-2 rounded-lg cursor-pointer hover:bg-red-50 transition"
@@ -37,15 +49,15 @@ const Navbar = () => {
             </a>
 
             <Link to="/">
-              <button className="flex items-center gap-2 text-blue-400  font-bold border px-4 sm:px-6 py-2 rounded-lg cursor-pointer hover:bg-blue-50 transition">
+              <button className="flex  items-center gap-2 text-blue-400  font-bold border px-4 sm:px-6 py-2 rounded-lg cursor-pointer hover:bg-blue-50 transition">
                 General Queries : 97834000000
               </button>
-              </Link>
-    
+            </Link>
+
             <Link to="/login">
               <button className="flex items-center gap-2 text-red-400  font-bold border px-4 sm:px-6 py-2 rounded-lg cursor-pointer hover:bg-red-50 transition">
                 <TbLogin2 className="text-2xl text-red-400" />
-                Login 
+                Login
               </button>
             </Link>
           </div>
