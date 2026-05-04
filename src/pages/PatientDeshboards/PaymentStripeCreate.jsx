@@ -3,7 +3,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import Paymentpage from "./Paymentpage";
-import PatientSidebar from "./PatientSidebar";
 import { useLocation } from "react-router-dom";
 
 const stripePromise = loadStripe(
