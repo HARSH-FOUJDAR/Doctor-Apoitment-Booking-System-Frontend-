@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useElements, useStripe } from "@stripe/react-stripe-js";
 import { Link } from "react-router-dom";
-import PatientSidebar from "./PatientSidebar";
+import PatientSidebar from "./patientSidebar";
 import { IoArrowBack } from "react-icons/io5";
 import { PaymentElement } from "@stripe/react-stripe-js";
 
