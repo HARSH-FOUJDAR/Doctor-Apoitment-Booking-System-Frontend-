@@ -32,7 +32,6 @@ const DoctorProfile = () => {
     reason: "",
     appointmentDate: "",
     appointmentTime: "",
-  
   });
 
   const token = localStorage.getItem("token");
@@ -431,24 +430,19 @@ const DoctorProfile = () => {
                 <p className="font-semibold mb-2">
                   Consultation Fee: ₹{doctor.payment}
                 </p>
-
                 <div className="space-y-2">
-                  <label className="flex gap-2 text-mg font-bold">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="clinic"
-                      onChange={handleChange}
-                    />
-                    Pay at Clinic
-                  </label>
+                  <button
+                    onClick={() => navigate("/payment-stripe")}
+                    className="bg-green-500 w-full cursor-pointer text-white py-2 px-4 rounded-lg hover:bg-green-600"
+                  >
+                    Pay Online
+                  </button>
                 </div>
               </div>
-            
+
               <button
-              onClick={() => navigate("/payment-stripe")}
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition"
+                className="w-full bg-blue-600 cursor-pointer text-white py-3 rounded-xl hover:bg-blue-700 transition"
               >
                 Confirm Booking
               </button>
