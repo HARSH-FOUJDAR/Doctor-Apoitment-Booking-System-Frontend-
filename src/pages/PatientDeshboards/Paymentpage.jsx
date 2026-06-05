@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import PatientSidebar from "./patientSidebar";
 import { IoArrowBack } from "react-icons/io5";
 import { PaymentElement } from "@stripe/react-stripe-js";
-
+import { toast } from "react-toastify";
+import { ClipLoader } from "react-spinners";
 const Paymentpage = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -104,6 +105,7 @@ const Paymentpage = () => {
     } catch (err) {
       console.log(err);
       setMessage("Payment failed");
+      toast.error("Payment failed");
     } finally {
       setLoading(false);
     }
@@ -112,6 +114,7 @@ const Paymentpage = () => {
   return (
     <div className=" flex items-center justify-center ">
       <PatientSidebar />
+
       <div className="w-full max-w-5xl p-10 rounded-xl bg-white  shadow">
         <Link to="/patienthome">
           <button className="flex items-center mb-4 text-blue-600">

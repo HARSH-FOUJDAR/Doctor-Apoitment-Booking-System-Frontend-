@@ -138,9 +138,6 @@ const DoctorHeroDeshboard = () => {
                 </div>
 
                 <div className="flex gap-10">
-                  <button className="text-emerald-600 hover:text-emerald-700 font-semibold text-sm transition-colors cursor-pointer">
-                    Confirm
-                  </button>
                   <Link to={`/patientdetails/${item._id}`}>
                     <button className="text-blue-600 font-semibold text-md  border px-3 rounded-lg hover:bg-blue-500 hover:text-white transition-colors cursor-pointer">
                       View

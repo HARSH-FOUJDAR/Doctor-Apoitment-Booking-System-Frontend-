@@ -259,7 +259,8 @@ const DoctorProfile = () => {
 
               <ul className="text-slate-700 space-y-3 text-sm">
                 <li>
-                  • Carry all previous medical reports, lab test results, and
+                  • Carry all previous medical reports, lab test results, an
+                  d
                   imaging records.
                 </li>
                 <li>

@@ -18,7 +18,13 @@ import PatientDetails from "./pages/DoctorDeshboard/patientDetails";
 import Paymentpage from "./pages/PatientDeshboards/Paymentpage";
 import PaymentSuccesspage from "./pages/PatientDeshboards/PaymentSuccesspage";
 import PaymentStripeCreate from "./pages/PatientDeshboards/PaymentStripeCreate";
+import EnerengecyContect from "./pages/PatientDeshboards/EnerengecyContect";
+import PaymentVoucher from "./pages/PatientDeshboards/PaymentVoucher";
+import MedicalStore from "./pages/PatientDeshboards/MedicalStore";
+import Settings from "./pages/DoctorDeshboard/Settings";
+
 const App = () => {
+
 
   return (
     <BrowserRouter>
@@ -41,6 +47,10 @@ const App = () => {
         <Route path="/payment" element={<Paymentpage />} />
         <Route path="/payment-success" element={<PaymentSuccesspage />} />
         <Route path="/payment-stripe" element={<PaymentStripeCreate />} />
+        <Route path="/emergency" element={<EnerengecyContect />} />
+        <Route path="/payment-voucher" element={<PaymentVoucher />} />
+        <Route path="/medicalstore" element={<MedicalStore />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   );

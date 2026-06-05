@@ -44,27 +44,26 @@ const PatientSidebar = () => {
       label: "My Appointments",
       path: "/myapoitment",
     },
-        {
+    {
       icon: <GrArticle size={22} />,
       label: "Payment History",
-      path: "/paymenthistory",
+      path: "/payment-voucher",
     },
-        {
+    {
       icon: <FaSuitcaseMedical size={22} />,
-      label: "Emergency Contacts",
+      label: "Emergency/Ambulance",
       path: "/emergency",
     },
-        {
+    {
       icon: <HiShoppingBag size={22} />,
       label: "Medical Store",
       path: "/medicalstore",
     },
-        {
+    {
       icon: <UserCircle size={22} />,
       label: "Profile",
       path: "/patientprofile",
-        },
-  
+    },
   ];
 
   return (
@@ -115,7 +114,6 @@ const PatientSidebar = () => {
         animate={{ width: isCollapsed ? "100px" : "280px" }}
         className="hidden lg:flex fixed left-0 top-0 h-screen bg-white  text-gray-800 flex-col z-50 border-r border-gray-100 shadow-xl"
       >
-
         {/* Logo Section */}
         <div className="p-8 mb-4 flex items-center gap-4">
           <div className="min-w-[48px] h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-100 text-white">

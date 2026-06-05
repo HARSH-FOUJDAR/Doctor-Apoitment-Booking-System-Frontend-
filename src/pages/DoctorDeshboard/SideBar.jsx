@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import { MdOutlineSettings } from "react-icons/md";
+
 import {
   LayoutDashboard,
   CalendarCheck,
@@ -36,6 +38,7 @@ const SideBar = () => {
       label: "Dashboard",
       path: "/doctorhome",
     },
+
     {
       icon: <CalendarCheck size={22} />,
       label: "Appointments",
@@ -51,6 +54,11 @@ const SideBar = () => {
       label: "Profile",
       path: "/doctorprofile",
     },
+     {
+      icon: <MdOutlineSettings size={22} />,
+      label: "Settings",
+      path: "/settings",
+    },
 
   ];
 
@@ -63,7 +71,7 @@ const SideBar = () => {
             <Stethoscope size={20} />
           </div>
           <span className="text-xl font-black text-gray-800 tracking-tight">
-            Medi<span className="text-blue-600">Care</span>
+            Appint<span className="text-blue-600">ify</span>
           </span>
         </div>
         <button

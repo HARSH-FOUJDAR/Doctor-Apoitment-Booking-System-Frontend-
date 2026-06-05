@@ -3,12 +3,14 @@ import AdminHeroSection from "../Admin/AdminHeroSection";
 import { IoPeople } from "react-icons/io5";
 import { IoMedkit } from "react-icons/io5";
 import DoctorHeroDeshboard from "./DoctorHeroDeshboard";
+import { FaUserCircle } from "react-icons/fa";
+
 const DoctorNavbar = () => {
   const [doctors, setDoctors] = useState([]);
 
   return (
-    <div className="flex">
-      <main className="flex-1 bg-gray-50 min-h-screen p-8">
+    <div className="min-h-screen flex">
+      <main className="flex-1 min-h-screen p-8">
         <header className="mb-8">
           <h1 className="font-bold text-3xl text-slate-800">
             Welcome to{" "}
