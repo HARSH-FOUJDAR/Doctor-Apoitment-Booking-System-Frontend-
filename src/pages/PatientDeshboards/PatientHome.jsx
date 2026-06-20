@@ -11,12 +11,14 @@ import Footer from "../../components/Footer";
 
 import { FaStethoscope } from "react-icons/fa"; // Doctor icon ke liye
 const PatientHome = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [Doctor, setDoctor] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   if (!token) {
-    toast.info("Plese Login Again");
+    toast.info("Please Login Again");
     navigate("/login");
     return;
   }
@@ -32,7 +34,7 @@ const PatientHome = () => {
 
         setDoctor(res.data.doctors || res.data);
       } catch (err) {
-        toast.error("Could not load ");
+        toast.error("Could not load doctors. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -112,11 +114,25 @@ const PatientHome = () => {
     "Infectious Disease Specialist",
   ];
 
+  const specializations = [...new Set(Doctor.map((dr) => dr.specialization))];
+
+  const searchCity = [...new Set(Doctor.map((dr) => dr.city))];
+
+  const searchdoctor = Doctor.filter((Dr) => {
+    const matchsearch = Dr.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchSpecialization = Dr.specialization
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    return matchsearch || matchSpecialization;
+  });
+
   return (
     <>
       {" "}
       <PatientSidebar></PatientSidebar>
-      <section className="bg-gradient-to-r from-blue-700 to-indigo-800 w-full  py-16 flex flex-col items-center  justify-center text-white px-4">
+      <section className="bg-gradient-to-r from-blue-700 to-indigo-800 w-full  py-16 flex flex-col items-center  justify-center text-white px-10">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-2">
             Find Your Specialist
@@ -127,26 +143,23 @@ const PatientHome = () => {
         </div>
 
         <div className="flex  max-w-7xl flex-col lg:flex-row gap-5 bg-white rounded-lg shadow-2xl overflow-hidden p-1 lg:p-2">
-          {/* 1. Location Filter */}
-          <div className="flex items-center flex-1 border-b lg:border-b-0  lg:border-r border-gray-500 px-4 py-3">
-            <IoLocation className="text-blue-500 text-2xl mr-2" />
-            <select className="w-full text-gray-700 focus:outline-none bg-transparent cursor-pointer font-medium">
-              <option value="">Select State</option>
-              {indianStates.map((state) => (
-                <option key={state} value={state} className="text-black">
-                  {state}
-                </option>
-              ))}
-            </select>
-          </div>
-
           {/* 2. Specialist Filter */}
-          <div className="flex items-center   flex-1 border-b lg:border-b-0 lg:border-r border-gray-500 px-4 py-3">
-            <FaStethoscope className="text-blue-500 text-xl mr-2" />
-            <select className="w-full text-gray-700 focus:outline-none bg-transparent cursor-pointer font-medium">
-              <option value="">Select Specialization</option>
-              {alldoctor.map((spec) => (
-                <option key={spec} value={spec} className="text-black">
+          <div className="flex items-center   flex-1 border-b lg:border-b-0 lg:border-r border-gray-500 px-6 py-5">
+            <FaStethoscope className="text-blue-500 text-xl mr-1" />
+            <select
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full text-gray-800   focus:outline-none bg-transparent cursor-pointer font-medium"
+            >
+              <option value="" className="text-gray-900">
+                Select Specialization
+              </option>
+              {specializations.map((spec) => (
+                <option
+                  key={spec}
+                  value={spec}
+                  className="text-black justify-center items-center flex "
+                >
                   {spec}
                 </option>
               ))}
@@ -154,17 +167,25 @@ const PatientHome = () => {
           </div>
 
           {/* 3. Search Doctor Name */}
-          <div className="flex items-center flex-[1.5] px-4 py-3">
+          <div className="flex items-center  px-5 py-5">
             <IoSearch className="text-gray-400 text-2xl mr-2" />
             <input
               type="text"
               placeholder="Search doctor by name..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full text-gray-800 focus:outline-none"
             />
           </div>
 
           {/* 4. Action Button */}
-          <button className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-bold py-4 items-center justify-center flex px-12 rounded-lg transition-all m-1">
+          <button
+            type="submit"
+            onClick={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+            className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-bold py-4 items-center justify-center flex px-12 rounded-lg transition-all m-1"
+          >
             Search Now
           </button>
         </div>
@@ -183,7 +204,7 @@ const PatientHome = () => {
 
           {/* Grid setup: 2 columns on desktop for horizontal cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-auto md-grid-cols-1">
-            {Doctor.map((doctor) => (
+            {searchdoctor.map((doctor) => (
               <div
                 key={doctor._id}
                 className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden flex flex-col sm:flex-row hover:shadow-xl transition-all duration-300 group"

@@ -41,7 +41,10 @@ const Home = () => {
       <Navbar></Navbar>
       <div className="">
         <div className="flex flex-col items-center justify-center  text-white text-2xl   bg-blue-600">
-          <button onClick={handelView} className="px-6 py-6 font-bold  transition-colors">
+          <button
+            onClick={handelView}
+            className="px-6 py-6 font-bold  transition-colors"
+          >
             BOOK APPOINTMENT -&gt;
           </button>
         </div>
@@ -219,8 +222,8 @@ const Home = () => {
           </p>
         </div>
         {loading ? (
-          <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100">
-            <div className="relative flex items-center justify-center">
+          <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100 ">
+            <div className="relative flex items-center justify-center ">
               <div className="absolute">
                 <ClipLoader color="#3B82F6" size={50} speedMultiplier={0.8} />
               </div>
@@ -239,16 +242,12 @@ const Home = () => {
         ) : (
           <section className="py-20 bg-gray-100 text-gray-800 dark:text-gray-200   ">
             <div className=" mx-auto px-6">
-              {/* Heading Section */}
-
-              {/* Grid setup: Ek line mein 4 cards (Desktop par) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
                 {Doctor.map((doctor) => (
                   <div
                     key={doctor._id}
                     className="bg-white rounded-3xl shadow-md border border-gray-200 overflow-hidden flex flex-col w-full"
                   >
-                    {/* Image */}
                     <div className="h-100 w-full">
                       <img
                         src={doctor.profile?.profilePicture}
@@ -257,7 +256,6 @@ const Home = () => {
                       />
                     </div>
 
-                    {/* Content */}
                     <div className="p-6 flex-grow flex flex-col">
                       <h3 className="text-xl font-bold text-gray-900">
                         Dr. {doctor.name}

@@ -23,7 +23,9 @@ const MyAppointment = () => {
       setAppointments(res.data.appointments || []);
     } catch (err) {
       console.error("Fetch Error:", err);
-      setError("Could not fetch appointments.");
+      setError(
+        "Could not fetch appointments.pls Login again Your session may have expired.",
+      );
     } finally {
       setLoading(false);
     }
@@ -111,7 +113,7 @@ const MyAppointment = () => {
 
                 <hr className="mb-4" />
 
-                <div className="space-y-2 text-sm">
+                <div className="space-y-2 text-md text-gray-700">
                   <p>
                     <strong>Patient:</strong> {a.firstName} {a.lastName}
                   </p>

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br  from-blue-800 to-blue-700 pt-16 pb-8 border-t border-slate-800">
+    <footer className="bg-gradient-to-br  from-blue-500 to-blue-700 pt-16 pb-8 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12 mb-16">
           {/* Brand & Description */}
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="min-w-[48px] h-12 bg-gradient-to-br  from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl  text-white">
+              <div className="min-w-[48px] h-12 bg-gradient-to-br  from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-xl ">
                 <img
                   className="w-10 h-10 object-contain rounded-2xl "
                   src="https://image.similarpng.com/file/similarpng/very-thumbnail/2022/01/Health-Medical-Logo-design-on-transparent-background-PNG.png"
@@ -23,7 +23,7 @@ const Footer = () => {
                 </span>
               </Link>
             </div>
-            <p className="text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-white leading-relaxed max-w-sm">
               Building innovative medical solutions for modern healthcare.
               Dedicated to connecting patients with top-tier medical
               professionals.
@@ -46,7 +46,7 @@ const Footer = () => {
                 <li key={item}>
                   <a
                     href="#"
-                    className="text-slate-400 hover:text-blue-400 transition-colors text-sm font-medium"
+                    className="text-white hover:text-blue-400 transition-colors text-sm font-medium"
                   >
                     {item}
                   </a>
@@ -70,7 +70,7 @@ const Footer = () => {
                 <li key={item}>
                   <a
                     href="#"
-                    className="text-slate-400 hover:text-blue-400 transition-colors text-sm font-medium"
+                    className="text-white hover:text-blue-400 transition-colors text-sm font-medium"
                   >
                     {item}
                   </a>
@@ -89,7 +89,7 @@ const Footer = () => {
                 <li key={item}>
                   <a
                     href="#"
-                    className="text-slate-400 hover:text-blue-400 transition-colors text-sm font-medium"
+                    className=" hover:text-blue-400 text-white transition-colors text-sm font-medium"
                   >
                     {item}
                   </a>
@@ -103,13 +103,13 @@ const Footer = () => {
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
               Legal
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 ">
               {["Terms of Service", "Privacy Policy", "Patient Rights"].map(
                 (item) => (
                   <li key={item}>
                     <a
                       href="#"
-                      className="text-slate-400 hover:text-blue-400 transition-colors text-sm font-medium"
+                      className="text-white hover:text-blue-400 transition-colors text-sm font-medium"
                     >
                       {item}
                     </a>

@@ -47,7 +47,8 @@ const DoctorProfile = () => {
         );
         setDoctor(res.data.doctor || res.data);
       } catch (err) {
-        toast.error("Doctor details not found");
+        toast.error("Doctor details not found pls login again");
+        navigate("/login");
       } finally {
         setLoading(false);
       }
@@ -259,8 +260,7 @@ const DoctorProfile = () => {
 
               <ul className="text-slate-700 space-y-3 text-sm">
                 <li>
-                  • Carry all previous medical reports, lab test results, an
-                  d
+                  • Carry all previous medical reports, lab test results, an d
                   imaging records.
                 </li>
                 <li>
