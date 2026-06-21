@@ -214,7 +214,7 @@ const Home = () => {
           <Testimonial></Testimonial>
         </section>
         <div className="mb-8 md:mb-12 px-4 md:flex  flex flex-col mx-auto items-center justify-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900">
+          <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-blue-900">
             Expert Medical Professionals
           </h2>
           <p className="mt-2 text-sm text-gray-600 sm:text-base md:text:lg max-w-2xl">
