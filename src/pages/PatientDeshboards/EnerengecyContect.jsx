@@ -5,7 +5,7 @@ import { MdAddCall } from "react-icons/md";
 import { useEffect, useState } from "react";
 const EnerengecyContect = () => {
   const [emergencyData, setEmergencyData] = React.useState([]);
- 
+
   useEffect(() => {
     const fetchEmergencyData = async () => {
       try {
@@ -25,7 +25,6 @@ const EnerengecyContect = () => {
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
           Emergency Contact 24×7
         </h1>
-
         <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl">
           In case of an emergency, please contact the following numbers.
         </p>
@@ -33,6 +32,7 @@ const EnerengecyContect = () => {
       <div className="max-w-7xl w-full mx-auto mt-8 px-4">
         {emergencyData.map((item) => (
           <div
+            key={item.id}
             className="  flex
         flex-col
         md:flex-row
