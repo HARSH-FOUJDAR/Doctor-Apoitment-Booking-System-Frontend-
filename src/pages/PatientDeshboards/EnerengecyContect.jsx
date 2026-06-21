@@ -5,24 +5,16 @@ import { MdAddCall } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const EnerengecyContect = () => {
-  const [emergencyData, setEmergencyData] = React.useState([]);
+  const [emergencyData, setEmergencyData] = useState([]);
 
-  const token = localStorage.getItem("token");
-  if (!token) {
-    toast.info("Please Login Again");
-    navigate("/login");
-    return;
-  }
   useEffect(() => {
     const fetchEmergencyData = async () => {
       try {
-        const res = await axios.get(
+        const response = await axios.get(
           "https://doctor-apoitment-booking-system.onrender.com/emergency/alldata",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          },
         );
-        setEmergencyData(res.data.mobile);
+
+        setEmergencyData(response.data.mobileNumbers || []);
       } catch (error) {
         console.error("Error fetching emergency data:", error);
       }
@@ -41,9 +33,9 @@ const EnerengecyContect = () => {
         </p>
       </section>
       <div className="max-w-7xl w-full mx-auto mt-8 px-4">
-        {emergencyData.map((item) => (
+        {emergencyData.map((item, index) => (
           <div
-            key={item.id}
+            key={index}
             className="  flex
         flex-col
         md:flex-row
