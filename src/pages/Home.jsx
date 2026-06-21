@@ -213,11 +213,11 @@ const Home = () => {
         <section>
           <Testimonial></Testimonial>
         </section>
-        <div className="mb-12 ">
-          <h2 className="text-3xl md:text-4xl justify-center items-center flex  font-bold text-blue-900">
+        <div className="mb-8 md:mb-12 px-4 md:flex  flex flex-col mx-auto items-center justify-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900">
             Expert Medical Professionals
           </h2>
-          <p className="mt-2 text-gray-600  justify-center items-center flex text-lg">
+          <p className="mt-2 text-sm text-gray-600 sm:text-base md:text:lg max-w-2xl">
             Book an appointment with our top-rated specialists.
           </p>
         </div>

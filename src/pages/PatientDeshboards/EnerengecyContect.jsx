@@ -20,40 +20,49 @@ const EnerengecyContect = () => {
   return (
     <>
       <PatientSidebar />
-      <section className="justify-center items-center flex w-full h-50 bg-blue-900  shadow-md">
-        <div className="Justify-content items-center flex flex-col">
-          <h1 className="text-3xl font-bold text-white mb-4">
-            Emergency Contact 24*7
-          </h1>
-          <p className="text-lg text-white mb-8">
-            In case of an emergency, please contact the following numbers:
-          </p>
-        </div>
+      <section className="flex flex-col items-center justify-center max-w-7xl rounded-2xl mt-8 w-full min-h-[220px] bg-blue-900 shadow-md mx-auto gap-4 px-4 text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+          Emergency Contact 24×7
+        </h1>
+
+        <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl">
+          In case of an emergency, please contact the following numbers.
+        </p>
       </section>
-      {emergencyData.map((item) => (
-        <div className="grid grid-cols-1 gap-4 mt-8 mx-auto w-7xl">
-          <section className="flex justify-center items-center w-full mt-8 mx-auto ">
-            <div className="flex justify-evenly items-center bg-gray-200 w-full h-20  rounded-md shadow-md gap-50">
-              <div className="bg-blue-200 w-15 h-15 rounded-full flex justify-center items-center ">
-                <PiAmbulanceFill className="text-3xl text-blue-800" />
-              </div>
-              <div className="flex justify-center items-start gap-5">
-                <MdAddCall className="text-4xl text-green-500" />
-                <span className="text-lg font-medium">
-                  {item.mobile || "N/A"}
-                </span>
-              </div>
-              <p className="text-lg font-medium">{item.name || "N/A"}</p>
-              <a
-                href={`tel:${item.mobile}`}
-                className="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-blue-600"
-              >
-                Call Now
-              </a>
+      <div className="max-w-7xl w-full mx-auto mt-8 px-4">
+        {emergencyData.map((item) => (
+          <div
+            className="  flex
+        flex-col
+        md:flex-row
+        items-center
+        justify-between
+        gap-4
+        bg-gray-200
+        rounded-md
+        shadow-md
+        p-4
+        mb-4"
+          >
+            <div className="bg-blue-200 w-15 h-15 rounded-full flex justify-center items-center ">
+              <PiAmbulanceFill className="text-3xl text-blue-800 " />
             </div>
-          </section>
-        </div>
-      ))}
+            <div className="flex justify-center items-start gap-3">
+              <MdAddCall className="text-4xl text-green-500" />
+              <span className="text-lg font-medium">
+                {item.mobile || "N/A"}
+              </span>
+            </div>
+            <p className="text-lg font-medium">{item.name || "N/A"}</p>
+            <a
+              href={`tel:${item.mobile}`}
+              className="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            >
+              Call Now
+            </a>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
