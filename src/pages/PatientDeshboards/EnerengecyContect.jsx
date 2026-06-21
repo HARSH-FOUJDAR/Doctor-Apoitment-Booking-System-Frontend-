@@ -3,15 +3,26 @@ import PatientSidebar from "./patientSidebar";
 import { PiAmbulanceFill } from "react-icons/pi";
 import { MdAddCall } from "react-icons/md";
 import { useEffect, useState } from "react";
+import axios from "axios";
 const EnerengecyContect = () => {
   const [emergencyData, setEmergencyData] = React.useState([]);
 
+  const token = localStorage.getItem("token");
+  if (!token) {
+    toast.info("Please Login Again");
+    navigate("/login");
+    return;
+  }
   useEffect(() => {
     const fetchEmergencyData = async () => {
       try {
-        const response = await fetch("https://doctor-apoitment-booking-system.onrender.com/emergency/alldata");
-        const data = await response.json();
-        setEmergencyData(data.mobileNumbers);
+        const res = await axios.get(
+          "https://doctor-apoitment-booking-system.onrender.com/emergency/alldata",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
+        setEmergencyData(res.data.mobile);
       } catch (error) {
         console.error("Error fetching emergency data:", error);
       }
