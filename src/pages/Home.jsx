@@ -217,7 +217,7 @@ const Home = () => {
           <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-blue-900">
             Expert Medical Professionals
           </h2>
-          <p className="mt-2 text-sm text-gray-600 sm:text-base md:text:lg max-w-2xl">
+          <p className="mt-2 text-sm  text-gray-600 sm:text-base md:text:lg max-w-2xl">
             Book an appointment with our top-rated specialists.
           </p>
         </div>

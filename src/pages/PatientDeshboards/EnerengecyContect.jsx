@@ -5,6 +5,7 @@ import { MdAddCall } from "react-icons/md";
 import { useEffect, useState } from "react";
 const EnerengecyContect = () => {
   const [emergencyData, setEmergencyData] = React.useState([]);
+ 
   useEffect(() => {
     const fetchEmergencyData = async () => {
       try {
