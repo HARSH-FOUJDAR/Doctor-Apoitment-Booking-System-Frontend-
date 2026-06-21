@@ -9,7 +9,7 @@ const EnerengecyContect = () => {
   useEffect(() => {
     const fetchEmergencyData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/emergency/alldata");
+        const response = await fetch("https://doctor-apoitment-booking-system.onrender.com/emergency/alldata");
         const data = await response.json();
         setEmergencyData(data.mobileNumbers);
       } catch (error) {
